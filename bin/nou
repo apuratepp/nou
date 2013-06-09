@@ -37,10 +37,10 @@ command :meteo do |c|
 end
 
 command :while do |c|
+  c.syntax = 'nou while'
+  c.summary = ''
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--command', 'Command to execute inside loop'
   c.when_called Nou::Commands::While.new
-  # IO.popen('ssh linode.equip9.org tail -f /home/apuratep/sites/plasma/log/production.log') do |io|
-  #   io.each do |line|
-  #     puts line
-  #   end
-  # end
 end

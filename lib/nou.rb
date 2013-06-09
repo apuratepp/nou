@@ -11,7 +11,6 @@ module Nou
 
 			def call(args, options)
 				p ENV['SERVER']
-				# system 'ssh linode.equip9.org ls -l'
 			end	
 		end
 
@@ -23,7 +22,8 @@ module Nou
 
 		class While
 			def call(args, options)
-				IO.popen('while(true); do du -hs *; sleep 1; clear; done') do |io|
+				command = args[0] || "du -hs *"
+				IO.popen("while(true); do #{command}; sleep 1; clear; done") do |io|
     			io.each do |line|
       			puts line
     			end
