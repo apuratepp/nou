@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'commander/import'
+
+# $:.push File.expand_path("../lib", __FILE__)
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'nou'
+
+program :version, '0.0.1'
+program :description, 'Personal Toolkit'
+ 
+command :logs do |c|
+  c.syntax = 'nou logs [options]'
+  c.summary = ''
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  # c.action do |args, options|
+  #   # Do something or c.when_called Nou::Commands::Logs
+  # end
+  # c.when_called Nou::Commands::Logs
+  c.when_called Nou::Commands::Logs.new
+end
+
+command :meteo do |c|
+  c.syntax = 'nou meteo [options]'
+  c.summary = ''
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  # c.action do |args, options|
+  #   # Do something or c.when_called Nou::Commands::Meteo
+  # end
+  c.when_called Nou::Commands::Meteo.new
+end
+
+command :while do |c|
+  c.when_called Nou::Commands::While.new
+  # IO.popen('ssh linode.equip9.org tail -f /home/apuratep/sites/plasma/log/production.log') do |io|
+  #   io.each do |line|
+  #     puts line
+  #   end
+  # end
+end
